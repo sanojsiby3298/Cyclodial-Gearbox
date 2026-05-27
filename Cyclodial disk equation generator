@@ -1,0 +1,29 @@
+#N - Number of rollers
+#Rr - Radius of the roller
+#R - Radius of the rollers PCD (Pitch Circle Diamater)
+#E - Eccentricity - offset from input shaft to a cycloidal disk
+
+#x = (R*cos(t))-(Rr*cos(t+arctan(sin((1-N)*t)/((R/(E*N))-cos((1-N)*t)))))-(E*cos(N*t))
+#y = (-R*sin(t))+(Rr*sin(t+arctan(sin((1-N)*t)/((R/(E*N))-cos((1-N)*t)))))+(E*sin(N*t))
+# ===== Given parameters =====
+N  = 10
+Rr = 6.5
+R  = 30
+E  = 1.5
+
+# ===== Build equation st  rings =====
+x_eq = (
+    f"x = ({R}*cos(t))"
+    f"-({Rr}*cos(t+arctan(sin((1-{N})*t)/(({R}/({E}*{N}))-cos((1-{N})*t)))))"
+    f"-({E}*cos({N}*t))"
+)
+
+y_eq = (
+    f"y = (-{R}*sin(t))"
+    f"+({Rr}*sin(t+arctan(sin((1-{N})*t)/(({R}/({E}*{N}))-cos((1-{N})*t)))))"
+    f"+({E}*sin({N}*t))"
+)
+
+# ===== Print equations =====
+print(x_eq)
+print(y_eq)
